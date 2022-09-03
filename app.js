@@ -5,7 +5,7 @@ function getPin() {
         return pin;
     }
     else {
-        console.log('got 3 digit and call again');
+        // console.log('got 3 digit and call again');
         return getPin();
     }
 }
@@ -14,3 +14,19 @@ function genaratePin() {
     const pin = getPin();
     document.getElementById('display-pin').value = pin;
 }
+
+// using event babol 
+document.getElementById('key-pad').addEventListener('click', function (event) {
+    const number = event.target.innerText;
+    const calcInput = document.getElementById('typed-numbers');
+    if (isNaN(number)) {
+        if (number == 'C') {
+            calcInput.value = '';
+        }
+    }
+    else {
+        const previousNumber = calcInput.value;
+        const newNumber = previousNumber + number;
+        calcInput.value = newNumber;
+    }
+});
